@@ -1,0 +1,39 @@
+ <h1> create buses here</h1>
+    <%= form_with model: @bus do |ff| %>
+ 
+        
+        <%= ff.label :boarding%><br/>
+         <%= ff.select :boarding, options_for_select(City.all.pluck(:city_name,:city_name)) %>
+        </p>
+        <p>
+        <%= ff.label :destination%><br/>
+         <%= ff.select :destination, options_for_select(City.all.pluck(:city_name,:city_name)) %>
+        </p>
+        <p>
+        <%= ff.label :bus_name%><br/>
+        <%= ff.text_field :bus_name %>
+        
+        </p>
+         <p>
+        <%= ff.label :time%><br/>
+        <%= ff.time_field :time%>
+        </p>
+        <p>
+        <%= ff.label :no_of_seats%><br/>
+        <%= ff.number_field :no_of_seats %>
+        </p>
+          <%= ff.fields_for :travel_schedules do |fff| %>
+           <p>
+            <%= fff.label :start_date%><br/>
+            <%= fff.date_field :start_date %>
+            </p>
+            <p>
+            <%= fff.label :end_date%><br/>
+            <%= fff.date_field :end_date%>
+          </p>
+             <%end%>
+      
+      <p>
+      <%= ff.submit %> 
+      </p>
+   <% end %>

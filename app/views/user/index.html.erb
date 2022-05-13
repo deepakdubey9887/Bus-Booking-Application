@@ -1,0 +1,13 @@
+<h1>this is user index page </h1>
+
+
+<%= form_tag buses_seat_path, method: :get do %>
+
+  
+  Boarding<%= text_field_tag :boarding, params[:boarding] %><br>
+  Destination<%= text_field_tag :destination, params[:destination] %><br>
+  Date of Journey<%= date_field_tag :doj, params[:doj] %><br>
+
+  <%= submit_tag "Search", name: nil %>
+  
+<% end %>

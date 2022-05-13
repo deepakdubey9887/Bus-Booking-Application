@@ -1,0 +1,41 @@
+<% if user_signed_in?%>
+  <h1> create buses here</h1>
+    <%= form_with url: new_oprator_path, mode: @user do |f| %>
+ 
+        <p>
+        <%= f.fields_for :buses do |ff| %>
+        
+        <p>
+        <%= ff.label :boarding%><br/>
+         <%= ff.select :city_name, options_for_select(City.all.pluck(:city_name,:city_name)) %>
+        </p>
+        <p>
+        <%= ff.label :destination%><br/>
+         <%= ff.select :city_name, options_for_select(City.all.pluck(:city_name,:city_name)) %>
+        </p>
+        <p>
+        <%= ff.label :bus_name%><br/>
+        <%= ff.text_field :bus_name %>
+        
+        </p>
+        
+        <p>
+        <%= ff.label :Date%><br/>
+        <%= ff.date_field :date %>
+        
+        </p>
+                                
+        <p>
+        <%= ff.label :time%><br/>
+        <%= ff.time_field :time%>
+        </p>
+        <% end %>
+        
+    <p>
+    <%= f.submit %> 
+    </p>
+    <% end %> 
+ <%else%>
+ <h3> You can not access this page <h3>
+<%end%>
+<%= link_to 'oprator index', oprator_index_path %>
