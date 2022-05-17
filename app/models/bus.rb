@@ -10,6 +10,8 @@ class Bus < ApplicationRecord
   has_many :booking_details
   has_many :travel_schedules
   accepts_nested_attributes_for :travel_schedules, allow_destroy: true
+  has_many :seats
+  accepts_nested_attributes_for :seats, allow_destroy: true
 
   
   

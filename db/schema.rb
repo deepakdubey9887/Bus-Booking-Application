@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_27_181823) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_15_105339) do
   create_table "booking_details", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,6 +52,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_27_181823) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role_name"
+  end
+
+  create_table "seats", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "bus_id"
+    t.string "seat_number"
   end
 
   create_table "travel_schedules", force: :cascade do |t|

@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   root "home#index"
   
   resources :oprator
-  resources :buses,except: ['show'] 
-     get'/buses/:id/seat'=>'buses#seat'
-    
+  resources :buses do
+    resources :seats
+  end
+     
+  resources :passenger_detail
 
   resources :admin, except: ['show']
   resources :user, except: ['show']
@@ -21,7 +23,9 @@ Rails.application.routes.draw do
  
   get '/admin/view_oprators' => 'admin#view_oprator'
   get '/admin/view_users' => 'admin#view_user'
+  get'/user/search_bus' => 'user#search'
+  get '/buses/:id/seats' => 'seat#new'
+  post'/buses/:id/seats' => 'seat#create'
   
-
   #get '/admin/:id' => 'admin#show'
 end

@@ -1,0 +1,30 @@
+<table>
+  <thead>
+     <tr>
+        <th>bus_name &emsp;</th>
+        <th>from&emsp;</th>
+        <th>destination&emsp;</th>
+        <th>No of Seats&emsp;</th> 
+         <th>Time&emsp;</th>
+        <th>Start Date</th> 
+        <th>Action</th> 
+     </tr>
+
+  </thead>
+    <tbody>
+        <%i=0%>
+        <% @buses.each do |bus| %>
+            <tr>
+                <td><%= bus.bus_name %></td>
+                <td><%= bus.boarding %></td> 
+               <td><%= bus.destination %></td> 
+                <td><%= bus.no_of_seats %></td>
+                
+                <td><%= bus.time %></td>
+                <td><%= bus.travel_schedules[i].start_date%></td>
+                <td><%= link_to "bus", "/buses/#{bus.id}" %></td>
+            </tr>
+            <%i=i+1%>
+        <% end %>
+    <tbody>
+</table>
