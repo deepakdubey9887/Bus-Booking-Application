@@ -12,6 +12,25 @@ class OpratorController < ApplicationController
   
     
  end 
+ def show_travel_schedules 
+  @bus =Bus.find(params[:bus_id])
+  @travel_schedules =@bus.travel_schedules
+  
+ end
+
+
+
+ def show_seat_status 
+  @bus=Bus.find(params[:bus_id])
+  @travel_schedule =TravelSchedule.find(params[:travel_schedule_id])
+  @seats= @travel_schedule.seats
+  @lenth = @seats.length()
+  
+end
+
+
+
+
 
 def new 
 #    #byebug

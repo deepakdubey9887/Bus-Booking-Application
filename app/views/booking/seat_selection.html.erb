@@ -1,0 +1,27 @@
+<h1>Select seats here </h1>
+<p style="color:red;"> The disabled boxes has already been booked</p>
+<%= form_with url: "/booking/#{@bus.id}/#{@travel_schedule.id}" do |f| %>
+  <% @seats.each_with_index do |seat, i| %>
+    <div>
+     <%if seat.seat_status == true
+            a= true
+            else 
+            a= false
+            end
+        %>
+        <div class="container">
+            <div class="row">
+              <div class="col-sm">
+              <%= check_box_tag 'seat_id[]', seat.id, false ,disabled: a%> Seat No. <%= i+1 %><br>
+             </div>
+           </div> 
+        </div>
+          
+         
+        
+    </div>  
+  <% end %>
+  <div>
+    <%= f.submit "Confirm" %>
+  </div>
+<%end%>

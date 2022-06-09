@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :booking_details
   has_many :cities
   
-  has_many :passanger_details
+  has_many :passanger_details, dependent: :destroy
   
 
   devise :database_authenticatable, :registerable,
@@ -31,6 +31,7 @@ after_create :send_greetings_notification
                  .deliver_now
  end
 
+ 
 
  private
 

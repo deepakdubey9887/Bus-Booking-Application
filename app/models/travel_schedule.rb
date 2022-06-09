@@ -1,6 +1,6 @@
 class TravelSchedule < ApplicationRecord
-    validates :start_date, presence: true
-    validates :end_date, presence: true
-    
-    belongs_to :bus, optional: true
+    validates :boarding_date, presence: true    
+    belongs_to :bus,dependent: :destroy
+
+    has_many :seats
 end

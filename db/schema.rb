@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_15_105339) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_25_083945) do
   create_table "booking_details", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "PNR"
-    t.integer "payment_id"
     t.integer "user_id"
-    t.string "pnr_no"
     t.integer "bus_id"
   end
 
@@ -30,6 +28,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_105339) do
     t.integer "no_of_seats"
     t.integer "user_id"
     t.time "time"
+    t.date "start_date"
+    t.date "end_date"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_105339) do
     t.integer "age"
     t.string "gender"
     t.integer "user_id"
+    t.integer "bus_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -57,16 +58,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_105339) do
   create_table "seats", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "seat_status", default: false
+    t.integer "travel_schedule_id"
     t.integer "bus_id"
-    t.string "seat_number"
   end
 
   create_table "travel_schedules", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "bus_id"
-    t.date "start_date"
-    t.date "end_date"
+    t.date "boarding_date"
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,6 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_105339) do
     t.string "last_name"
     t.string "contact"
     t.integer "role_id"
+    t.boolean "active", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

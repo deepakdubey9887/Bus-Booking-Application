@@ -4,9 +4,10 @@
 <%= form_tag user_search_bus_path, method: :get do %>
 
   
-  Boarding<%= text_field_tag :boarding, params[:boarding] %><br>
-  Destination<%= text_field_tag :destination, params[:destination] %><br>
-  Date of Journey<%= date_field_tag :doj, params[:doj] %><br>
+  <strong>Boarding  </strong><%= text_field_tag :boarding, params[:boarding] %><br>
+  <br>
+  <strong>Destination </strong><%= text_field_tag :destination, params[:destination] %><br>
+  <strong>Date of Journey  </strong><%= date_field_tag :doj, params[:doj] %><br>
 
   <%= submit_tag "Search", name: nil %>
   

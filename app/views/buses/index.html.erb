@@ -22,7 +22,7 @@ bus index page
                 <td><%= bus.no_of_seats %></td>
                
                 <td><%= bus.time %></td>
-                <td><%# action %></td>    
+                <td><%= link_to 'Edit', edit_bus_path(bus) %></td>   
             </tr>
         <% end %>
     <tbody>

@@ -76,7 +76,7 @@ gem 'cssbundling-rails'
 gem 'devise'
 gem 'bootstrap','~>5.1.3'
 gem 'jquery-rails'
-
+gem 'uglifier'
 
 
 gem 'responders'

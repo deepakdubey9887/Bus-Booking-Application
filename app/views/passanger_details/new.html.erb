@@ -1,0 +1,30 @@
+<%= form_with model: @passanger do |ff| %>
+   <%= hidden_field_tag(:seat_id, params[:seat_id])%>
+     <%= ff.hidden_field :user_id, :value => current_user.id %>
+    <%= ff.hidden_field :bus_id, :value => params[:bus_id] %> 
+
+        <%(0..@length-1).to_a.each do |i| %>    
+                <%= ff.label :name%><br/>
+                 <%= ff.text_field  "passanger[][name]"%>
+                 
+                </p>
+                <p>
+                <%= ff.label :gender%><br/>
+                <%= ff.text_field  "passanger[][gender]"%>
+                </p>
+                <p>
+                <%= ff.label :age%><br/>
+                <%= ff.number_field "passanger[][age]" %>
+                </p>
+               <%end%> 
+      <p>
+      <%= ff.submit %> 
+      </p>
+   <% end %>
+
+
+
+
+
+
+

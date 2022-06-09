@@ -11,7 +11,7 @@
       <th scope="col">Destination</th>
       <th scope="col">No of seats</th>
       <th scope="col">Time</th>
-      
+      <th scope="col">Action</th>
   </thead>
   <tbody>
         <% @buses.each do |bus| %>
@@ -22,6 +22,8 @@
                 <td><%= bus.destination %></td>
                 <td><%= bus.no_of_seats %></td>
                 <td><%= bus.time %></td>
+                <td><%= link_to 'Edit', edit_bus_path(bus) %></td>  
+                 <td><%= link_to 'show Schedules', show_travel_schedules_url(bus) %></td>  
               
             </tr>
         <%end%>

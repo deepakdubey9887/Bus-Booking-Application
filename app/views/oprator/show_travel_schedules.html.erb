@@ -1,0 +1,26 @@
+
+
+
+<div class="header" style="color:blue;">These are the travel schedules of the selected bus</div>
+
+<p>Bus Name: <%=@bus.bus_name%></p>
+<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">Boarding_date</th>
+      <th scope= "col"> Action</th>
+      
+  </thead>
+  <tbody>
+        <% @travel_schedules.each do |travel_schedule| %>
+            <tr>
+               <td><%= travel_schedule.boarding_date %></td>
+               <td><%=link_to "show seats status", "/oprator/#{@bus.id}/travel_schedules/#{travel_schedule.id}/seats_status" %></td>
+            </tr>
+        <%end%>
+   </tbody>
+</table>
+<div>
+<p><%=link_to "back", request.referer.present? ? request.referer : default_path %></p>
+</div>
