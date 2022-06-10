@@ -1,14 +1,56 @@
-<h1>this is user index page </h1>
 
 
+<div class="slide-right">
+  <h2 style="color:blue;">Search Bus Here</h2>
+</div>
 <%= form_tag user_search_bus_path, method: :get do %>
 
   
-  <strong>Boarding  </strong><%= text_field_tag :boarding, params[:boarding] %><br>
-  <br>
-  <strong>Destination </strong><%= text_field_tag :destination, params[:destination] %><br>
-  <strong>Date of Journey  </strong><%= date_field_tag :doj, params[:doj] %><br>
+ <label> <strong>Boarding  </strong></label>
+  <div><%= text_field_tag :boarding, params[:boarding] %></div><br>
 
-  <%= submit_tag "Search", name: nil %>
+<label> <strong>Destination </strong></label>
+<div><%= text_field_tag :destination, params[:destination] %></div><br>
+
+<label><strong>Date of Journey  </strong></label>
+ <div> <%= date_field_tag :doj, params[:doj] %></div><br>
+
+  <%= submit_tag "Search", name: nil ,class: "btn btn-primary btn-lg"%>
   
 <% end %>
+
+<style>
+.jumbotron .container h1 {
+   text-align: left;
+   color: blue;
+   font-size: 60px;  
+   font-family: 'Shift', sans-serif;
+   font-weight: bold;
+   padding-top:20px;
+   padding-bottom:5px;
+   margin-bottom: 0;
+   padding-bottom: 0;
+  
+}
+.slide-right {
+  width: 100%;
+  overflow: hidden;
+  margin-left: 400px;
+  max-width: 500px
+}
+
+.slide-right h2 {
+  animation: 2s slide-right;
+  animation-delay: 2s;
+}
+
+@keyframes slide-right {
+  from {
+    margin-left: -500px;
+  }
+
+  to {
+    margin-left: 0%;
+  }
+}
+</style>
