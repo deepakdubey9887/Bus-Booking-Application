@@ -17,23 +17,19 @@ class AdminController < ApplicationController
     
     
       if @user.update(:active =>params[:completed])
+      # if @user.toggle(:active)
         # respond_to do |format|
         #   format.html { redirect_to admin_view_oprators_path}
         #   format.js
         # end
-        flash[:notice] ="updated"
-      else
+          respond_to  do |format|
+            format.html
+          end
+        
+        flash[:alert] ="Opreators Status updated successfully"
+       else
         render :view_oprator
       end 
   end
-def disable_user
-
-  # if @current_user = User.where(role_id: 1)
-  #   u = User.find(params[:user_id]) 
-  #   u.destroy
-  #   u = User.update(active: true)
-  
-end
-
 
 end 

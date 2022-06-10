@@ -29,7 +29,6 @@
             </tr>
         <%end%>
     </tbody>
-<%= check_box_tag 'completed'%>
 <style>
 
 
@@ -98,29 +97,34 @@ input:checked + .slider:before {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 $(".activated").bind('change', function(){
-  // $(this).attr('checked'); // true, false on offset change
+// $(this).attr('checked'); // true, false on offset change
   // $(this).val()
-  // $(this).is(":checked")
+  // $(this).is(":checke  d")
   //console.log('this-data---------->', $(this).data());
-  console.log(this.checked);
- if (this.checked==true){
-   var pass_variable=this.checked
+  console.log(typeof this.checked);
+ //if (this.checked){
+     var pass_variable;
+     
+     pass_variable=(this.checked) ? true: false;
+     console.log(pass_variable)
     $.ajax({
       url: '/admin/'+this.value+'/update_status',
       type: 'POST',
       action: 'update_status',
+      format: "JS",
       data: {"completed": pass_variable}
+
     });
-  }
-  else if(this.checked==false) {
-     var pass_variable=false
-    $.ajax({
-      url: '/admin/'+this.value+'/update_status',
-      type: 'POST',
-      action: 'update_status',
-      data: {"completed": pass_variable}
-    });
-  } 
+  //}
+  // else if(this.checked==false) {
+  //    var pass_variable=false
+  //   $.ajax({
+  //     url: '/admin/'+this.value+'/update_status',
+  //     type: 'POST',
+  //     action: 'update_status',
+  //     data: {"completed": pass_variable}
+  //   });
+  // } 
    
 });
 

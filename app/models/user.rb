@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :contact, presence: true
-  
+  validates :active, inclusion: { in: [ true, false ] }
   has_many :buses
   belongs_to :role
   has_many :booking_details
@@ -32,7 +32,13 @@ after_create :send_greetings_notification
  end
 
  
+def active_for_authentication?
 
+  super && active?
+end
+def inactive_message
+  "You are not allowed to log in."
+end
  private
 
 
