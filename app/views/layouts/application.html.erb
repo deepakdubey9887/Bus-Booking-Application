@@ -5,30 +5,36 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application.bootstrap", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'https://checkout.stripe.com/checkout.js' %>
+    <script src="https://js.stripe.com/v3/"></script>
   </head>
-
   <body>
-     <%@user = current_user%>
-     <%if user_signed_in?%>
-        <%if @user.role_id== 1%>
-          <%= render "shared/admin_navbar" %>
-        <%else%>
-           <%= render "shared/header" %>
-         <%end%>
+    <%@user = current_user%>
+    <%if user_signed_in?%>
+      <%if @user.role_id== 1%>
+        <%= render "shared/admin_navbar" %>
       <%else%>
         <%= render "shared/header" %>
       <%end%>
-    
+    <%else%>
+      <%= render "shared/header" %>
+    <%end%>
     <div class="container">
       <div class="row">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <% if notice %>
+          <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
+            <%= notice %>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+            <%= alert %>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
     </div>
-    
   </body>
 </html>

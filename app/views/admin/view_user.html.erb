@@ -1,22 +1,19 @@
 <table class="table">
   <thead>
     <tr>
-
+      <th scope="col"><strong>S.N</strong></th>
       <th scope="col"><strong>First Name</strong></th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
-      
     </tr>
   </thead>
   <tbody>
-        <% @users.each do |user| %>
-            <tr>
-   
-            <td><%=user.first_name %></td>
-            <td><%=user.last_name %></td>
-            <td><%=user.email %></td> 
-                
-            </tr>
-        <%end%>
-    </tbody>
-
+    <% @users.each_with_index do |user,index| %>
+      <tr>
+        <th scope="row"><%=index+1%></th>
+        <td><%=user.first_name %></td>
+        <td><%=user.last_name %></td>
+        <td><%=user.email %></td>
+      </tr>
+    <%end%>
+  </tbody>

@@ -1,30 +1,49 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>Fill Passanger Details</h1>
+  </div>
+</div>
+</body>
+</html>
 <%= form_with model: @passanger do |ff| %>
-   <%= hidden_field_tag(:seat_id, params[:seat_id])%>
-     <%= ff.hidden_field :user_id, :value => current_user.id %>
-    <%= ff.hidden_field :bus_id, :value => params[:bus_id] %> 
+  <div class="card">
+    <div class="card-body">
+      <%= hidden_field_tag(:seat_id, params[:seat_id])%>
+      <%= ff.hidden_field :user_id, :value => current_user.id %>
+      <%= ff.hidden_field :bus_id, :value => params[:bus_id] %>
+      <%(0..@length-1).to_a.each do |i| %>
+        <div>
+          <%= ff.label :name,{class: "form-lable"} %><br/>
+          <%= ff.text_field  "passanger[][name]", {class: "form-control"}%>
+        </div>
+        <p>
+          <%= ff.label :gender,{class: "form-lable"} %><br/>
+          <%= ff.text_field  "passanger[][gender]", {class: "form-control"}%>
+        </p>
+        <p>
+          <%= ff.label :age,{class: "form-lable"} %><br/>
+          <%= ff.number_field "passanger[][age]", {class: "form-control"} %>
+        </p>
+      <%end%>
+      <div class="action">
+        <%= ff.submit %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<style>
+  .card{
+      margin-left: 20%;
+      margin-right: 20%;
 
-        <%(0..@length-1).to_a.each do |i| %>    
-                <%= ff.label :name%><br/>
-                 <%= ff.text_field  "passanger[][name]"%>
-                 
-                </p>
-                <p>
-                <%= ff.label :gender%><br/>
-                <%= ff.text_field  "passanger[][gender]"%>
-                </p>
-                <p>
-                <%= ff.label :age%><br/>
-                <%= ff.number_field "passanger[][age]" %>
-                </p>
-               <%end%> 
-      <p>
-      <%= ff.submit %> 
-      </p>
-   <% end %>
+    }
+    .action{
+       text-align:center;
 
-
-
-
-
-
-
+    }
+    .jumbotron{
+      text-align: center;
+      margin-left: 20%;
+      margin-right: 20%;
+    }
+</style>

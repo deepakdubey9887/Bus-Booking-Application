@@ -1,0 +1,2 @@
+class Addbooltobooking < ApplicationRecord
+end

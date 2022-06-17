@@ -1,29 +1,26 @@
 <table>
   <thead>
-     <tr>
-        <th>bus_name &emsp;</th>
-        <th>from&emsp;</th>
-        <th>destination&emsp;</th>
-        <th>No of Seats&emsp;</th> 
-         <th>Time&emsp;</th>
-        <th>Action</th> 
-     </tr>
-
+    <tr>
+      <th>BUS NAME &emsp;</th>
+      <th>FROM&emsp;</th>
+      <th>DESTINATION&emsp;</th>
+      <th>No of Seats&emsp;</th>
+      <th>TIME&emsp;</th>
+      <th>BOOK</th>
+    </tr>
   </thead>
+  <tbody>
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td><%= schedule.bus.bus_name %></td>
+        <td><%= schedule.bus.boarding %></td>
+        <td><%= schedule.bus.destination %></td>
+        <td><%= schedule.bus.no_of_seats %></td>
+        <td><%= schedule.bus.time %></td>
+        <td>
+          <%= link_to "Book","/booking/#{schedule.bus.id}/#{schedule.id}" ,class: "btn btn-warning btn-sm"%>
+        </td>
+      </tr>
+    <% end %>
     <tbody>
-        <% @schedules.each do |schedule| %>
-            <tr>
-                <td><%= schedule.bus.bus_name %></td>
-                <td><%= schedule.bus.boarding %></td> 
-               <td><%= schedule.bus.destination %></td> 
-                <td><%= schedule.bus.no_of_seats %></td>
-                
-                <td><%= schedule.bus.time %></td>
-                <td>
-                    <%= link_to "Book","/booking/#{schedule.bus.id}/#{schedule.id}" %>
-                </td>
-              
-            </tr>
-        <% end %>
-    <tbody>
-</table>
+    </table>

@@ -1,27 +1,37 @@
-<h1>Select seats here </h1>
-<p style="color:red;"> The disabled boxes has already been booked</p>
+<h4 style=" text-align:center;">Select seats here </h4>
+<p style="color:red;text-align:center;"> The disabled boxes has already been booked</p>
 <%= form_with url: "/booking/#{@bus.id}/#{@travel_schedule.id}" do |f| %>
-  <% @seats.each_with_index do |seat, i| %>
-    <div>
-     <%if seat.seat_status == true
+  <ul>
+    <% @seats.each_with_index do |seat, i| %>
+      <%if seat.seat_status == true
             a= true
             else 
             a= false
             end
         %>
-        <div class="container">
-            <div class="row">
-              <div class="col-sm">
-              <%= check_box_tag 'seat_id[]', seat.id, false ,disabled: a%> Seat No. <%= i+1 %><br>
-             </div>
-           </div> 
-        </div>
-          
-         
-        
-    </div>  
-  <% end %>
-  <div>
-    <%= f.submit "Confirm" %>
-  </div>
+      <div class="col-md-4">
+        <li><%= check_box_tag 'seat_id[]', seat.id, false ,disabled: a%> <code>Seat No. <%= i+1 %></code><br>
+        </li>
+      </div>
+    <% end %>
+  </ul>
+  <p class="center"><%= f.submit "Confirm", class: "btn btn-success btn-md" %></p>
 <%end%>
+<style>
+  ul {
+      -webkit-column-count: 3;
+      -moz-column-count: 3;
+      column-count: 3;
+      justify-content: center;
+      column-gap: 0px;
+  }
+
+   .center{
+     text-align:center;
+  }
+
+  }
+  li{
+    margin:0px;
+  }
+</style>

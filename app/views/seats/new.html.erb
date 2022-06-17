@@ -1,12 +1,9 @@
 <h1> From here you can select the seats</h1>
 <%= form_with model: @seat, url: [@bus, @seat], html: {multipart: true} do |f| %>
-    <div>
-     <% (1..@bus.no_of_seats).to_a.each do |i| %>
-     
-     
+  <div>
+    <% (1..@bus.no_of_seats).to_a.each do |i| %>
       <%= check_box_tag 'seat_number[seat_number][]', i, id: 'seat' %>
-      
-      <%end%>
-    </div>
+    <%end%>
+  </div>
   <%=f.submit %>
 <%end%>

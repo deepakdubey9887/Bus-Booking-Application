@@ -1,18 +1,17 @@
 show seat status here
 <%@seats.each_with_index do |seat, i|%>
-        <%if seat.seat_status == true
+  <%if seat.seat_status == true
             a= "booked"
             else 
             a= "not booked"
             end
         %>
-        <div class="card" >
-        <p><strong>Seat No.</strong> <%=i+1%></p>
-        <%if a=="booked"%>
-           <p style="color:green;"><%= a%></p>
-        <%else%>
-            <p style="color:red;"><%= a%></p>
-        <%end%>
-        </div>
-   <%end%>
-    
+  <div class="card" >
+    <p><strong>Seat No.</strong> <%=i+1%></p>
+    <%if a=="booked"%>
+      <p style="color:green;"><%= a%></p>
+    <%else%>
+      <p style="color:red;"><%= a%></p>
+    <%end%>
+  </div>
+<%end%>

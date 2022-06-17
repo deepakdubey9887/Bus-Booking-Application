@@ -5,4 +5,5 @@ import * as bootstrap from "bootstrap"
 import "jquery"
 import "jquery_ujs"
 import "popper"
+import "./custom"
 

@@ -1,36 +1,51 @@
- <h1> create buses here</h1>
-    <%= form_with model: @bus do |ff| %>
- 
-        
-        <%= ff.label :boarding%><br/>
-         <%= ff.select :boarding, options_for_select(City.all.pluck(:city_name,:city_name)) %>
-        </p>
-        <p>
-        <%= ff.label :destination%><br/>
-         <%= ff.select :destination, options_for_select(City.all.pluck(:city_name,:city_name)) %>
-        </p>
-        <p>
-        <%= ff.label :bus_name%><br/>
-        <%= ff.text_field :bus_name %>
-        
-        </p>
-         <p>
-        <%= ff.label :time%><br/>
-        <%= ff.time_field :time%>
-        </p>
-        <p>
-        <%= ff.label :no_of_seats%><br/>
-        <%= ff.number_field :no_of_seats %>
-        </p>
-        <p>
-        <%= ff.label :start_date%><br/>
-        <%= ff.date_field :start_date %>
-        </p>
-        <p>
-        <%= ff.label :end_date%><br/>
-        <%= ff.date_field :end_date %>
-        </p>
-      <p>
-      <%= ff.submit %> 
-      </p>
-   <% end %>
+<h4 style="text-align:center; background-color:#ebc934;"> Bus Creation Form </h4>
+<%= form_with model: @bus do |ff| %>
+  <div class="card">
+    <div class= card-body>
+      <div class="field">
+        <%= ff.label :boarding, {class:"form-group"}%><br/>
+        <%= ff.select :boarding, options_for_select(City.all.pluck(:city_name,:city_name)) %>
+      </div>
+      <div class="field">
+        <%= ff.label :destination, {class:"form-group"}%><br/>
+        <%= ff.select :destination, options_for_select(City.all.pluck(:city_name,:city_name)) %>
+      </div>
+      <div class="field">
+        <%= ff.label :bus_name, {class:"form-group"}%><br/>
+        <%= ff.text_field :bus_name, {class: "form-control"}%>
+      </div>
+      <div class="field">
+        <%= ff.label :time, {class:"form-group"}%><br/>
+        <%= ff.time_field :time, {class: "form-control"}%>
+      </div>
+      <div class="field">
+        <%= ff.label :no_of_seats, {class:"form-group"}%><br/>
+        <%= ff.number_field :no_of_seats , {class: "form-control"}%>
+      </div>
+      <div class="field">
+        <%= ff.label :start_date, {class:"form-group"}%><br/>
+        <%= ff.date_field :start_date , {class: "form-control"}%>
+      </div>
+      <div class="field">
+        <%= ff.label :end_date, {class:"form-group"}%><br/>
+        <%= ff.date_field :end_date, {class: "form-control"} %>
+      </div>
+      <div class ="container">
+        <div class="action">
+          <%= ff.submit,{class: "btn btn-success"} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<style>
+  .card-title{
+    text-align: auto;
+  }
+  .action{
+  margin:cebter==
+  }
+  .action{
+     text-align:center;
+  }
+</style>
