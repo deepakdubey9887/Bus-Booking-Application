@@ -34,12 +34,13 @@ class PassangerDetailsController < ApplicationController
         flash[:alert] = "passengers has been saved"
       else
         flash[:alert] = "something went wrong"
+        request.referrer
       end
     end
-
+    redirect_to checkout_index_path(booking_details_id: @booking.id, seat_id: params[:seat_id])
     # @Passanger = PassangerDetail.new(params[:passanger_detail])
     #redirect_to billing_path(request.params)
-    redirect_to checkout_index_path(booking_details_id: @booking.id, seat_id: params[:seat_id])
+
     ## booking_details_id: @booking.id, seat_id: params[:seat_id]
     # arr= params[:seat_id]
     # @length=arr.length()

@@ -1,8 +1,27 @@
 class BusesController < ApplicationController
   before_action :authenticate_user!
 
-  def show
+  def edit
     @bus = Bus.find(params[:id])
+  end
+
+  def update
+    @bus = Bus.find(params[:id])
+    @bus = Bus.update(bus_params)
+    @bus.user = current_user
+
+    # @travel_schedules = @bus.travel_schedules
+    # @boarding_date =@travel_schedules.boarding_date
+
+    if @bus.save
+      flash[:notice] = "Bus updated successfully."
+
+      travel_schedule(@bus.start_date, @bus.end_date, @bus.no_of_seats)
+      # create_seat(@bus.no_of_seats)
+      redirect_to oprator_index_path
+    else
+      render "new"
+    end
   end
 
   def index

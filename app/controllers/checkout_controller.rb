@@ -1,6 +1,5 @@
 class CheckoutController < ApplicationController
   def index
-    byebug
   end
 
   require "stripe"
